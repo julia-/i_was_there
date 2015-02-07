@@ -1,0 +1,19 @@
+<h2><% flash[:error] if flash[:error].present? %></h2>
+
+<h1>Log in</h1>
+
+<div>
+  <%= form_tag login_path do %>
+    <div>
+      <%= label_tag :username %>
+      <%= text_field_tag :username, nil, :autofocus => true %>
+    </div>
+    <div>
+      <%= label_tag :password %>
+      <%= password_field_tag :password  %>
+    </div>
+    <div>
+      <%= submit_tag 'Login' %>
+    </div>
+  <% end %>
+</div>
