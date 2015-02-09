@@ -1,0 +1,10 @@
+<%= form_tag "/events/#{@event.id}/create_artist" do %>
+  <div>
+    <%= label_tag :artist_id %>
+    <%= collection_select :events, :artist_ids, Artist.all, :id, :name  %>
+  </div>
+  <%#= f.hidden_field :event_id, :value => @event.id %>
+  <div>
+    <%= submit_tag 'Submit' %>
+  </div>
+<% end %>

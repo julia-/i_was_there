@@ -1,4 +1,4 @@
-<h2><% flash[:error] if flash[:error].present? %></h2>
+<h2><%= flash[:error] if flash[:error].present? %></h2>
 
 <h1>Log in</h1>
 
@@ -6,11 +6,11 @@
   <%= form_tag login_path do %>
     <div>
       <%= label_tag :username %>
-      <%= text_field_tag :username, nil, :autofocus => true %>
+      <%= text_field_tag :username, nil, :autofocus => true, :required => true %>
     </div>
     <div>
       <%= label_tag :password %>
-      <%= password_field_tag :password  %>
+      <%= password_field_tag :password, nil, :required => true %>
     </div>
     <div>
       <%= submit_tag 'Login' %>

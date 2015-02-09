@@ -12,4 +12,5 @@ class ApplicationController < ActionController::Base
     end
     session[:user_id] = nil unless @current_user.present?
   end
+
 end

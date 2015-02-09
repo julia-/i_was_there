@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+}
+
+header {
+  background-color: #000;
+  color: #fff;
+  margin: auto;
+}
+h1 {
+  margin: auto;
+}
+nav li {
+    display: inline-block;
+    padding: 10px;
+    list-style-type: none;
+}
+
+nav a {
+  color: #fff;
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+.content-container {
+  margin: 20px auto;
+}

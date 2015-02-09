@@ -1,2 +1,21 @@
-<h1>Events#show</h1>
-<p>Find me in app/views/events/show.html.erb</p>
+<h1>Show single event</h1>
+
+<ul class="event-details">
+  <ul>
+    <li>Date: <%= @event.date.strftime('%B %e, %Y') if @event.date %></li>
+    <li>Venue: <%= @event.venue_name %></li>
+    <li>Location: <%= @event.venue_location %></li>
+  </ul>
+</ul>
+
+<% @event.artists.each do |artist| %>
+  <p><%= artist.name %></p>
+<% end %>
+
+<%= link_to 'Add artist', add_artist_event_path(@event) %>
+
+<%= link_to 'Edit event', edit_event_path(@event) %>
+
+<% if @current_user.is_admin? %>
+<%= link_to 'Delete event', @event, :method => 'delete', :data => {:confirm => "Are you sure?"} %>
+<% end %>

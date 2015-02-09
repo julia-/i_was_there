@@ -1,0 +1,21 @@
+<%= form_for @event do |f| %>
+  <div>
+    <%= f.label :date %>
+    <%= f.date_select :date, :autofocus => true, :required => true %>
+  </div>
+  <div>
+    <%= f.label :venue_name %>
+    <%= f.text_field :venue_name, :required => true %>
+  </div>
+  <div>
+    <%= f.label :venue_location %>
+    <%= f.text_field :venue_location, :required => true %>
+  </div>
+  <div>
+    <%= f.label :image %>
+    <%= f.url_field :image %>
+  </div>
+  <div>
+    <%= f.submit 'Submit' %>
+  </div>
+<% end %>

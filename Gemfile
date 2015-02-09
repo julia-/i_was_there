@@ -23,6 +23,10 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'slim'
+gem 'font-awesome-rails'
+gem 'normalize-rails'
+
 group :development do
   gem 'pry-rails'
   gem 'pry-stack_explorer'

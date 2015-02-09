@@ -1,2 +1,23 @@
-<h1>Artists#show</h1>
-<p>Find me in app/views/artists/show.html.erb</p>
+<h1><%= @artist.name %></h1>
+<div class="artist-details">
+  <ul>
+    <li>Name: <%= @artist.name %></li>
+    <li>Hometown: <%= @artist.city %>, <%= @artist.country %> </li>
+    <li>Genre: <%= @artist.genre %></li>
+  </ul>
+</div>
+<div class="artist-bio">
+  <p><%= @artist.bio %></p>
+</div>
+
+<% @artist.events.each do |event| %>
+<p><%= link_to event.date, event %></p>
+<% end %>
+
+<ul>
+  <li><%= link_to 'Add an event', new_artist_event_path(@artist) %></li>
+  <li><%= link_to 'Edit', edit_artist_path(@artist) %></li>
+  <% if @current_user.is_admin? %>
+    <li><%= link_to 'Delete artist', @artist, :method => 'delete', :data => {:confirm => "Are you sure?"} %></li>
+  <% end %>
+</ul>

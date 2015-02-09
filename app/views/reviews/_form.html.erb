@@ -1,0 +1,17 @@
+<%= form_for @review do |f| %>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title, :autofocus => true, :required => true %>
+  </div>
+  <div>
+    <%= f.label :content %>
+    <%= f.text_area :content, :required => true %>
+  </div>
+  <div>
+    <%= f.label :image %>
+    <%= f.url_field :image %>
+  </div>
+  <div>
+    <%= f.submit 'Submit' %>
+  </div>
+<% end %>

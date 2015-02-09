@@ -1,2 +1,10 @@
-<h1>Reviews#show</h1>
-<p>Find me in app/views/reviews/show.html.erb</p>
+<h1><%= @review.title %></h1>
+<div>
+  <p><%= @review.content %></p>
+</div>
+<p>Author <%= @review.user.username %></p>
+
+<%= link_to 'Edit review', edit_review_path(@review) %>
+<% if @current_user.is_admin? %>
+<%= link_to 'Delete review', @event, :method => 'delete', :data => {:confirm => "Are you sure?"} %>
+<% end %>

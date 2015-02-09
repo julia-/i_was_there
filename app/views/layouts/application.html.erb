@@ -7,16 +7,18 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-  <div class="main-container">
-    <header>
-      <h1>I was there</h1>
-      <nav>
-        <ul>
-          <%== nav_menu %>
-        </ul>
-      </nav>
-    </header>
-  </div>
-    <%= yield %>
+    <div class="main-container">
+      <header>
+        <h1>I was there</h1>
+        <nav>
+          <ul>
+            <%== nav_menu %>
+          </ul>
+        </nav>
+      </header>
+      <div class="content-container">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
