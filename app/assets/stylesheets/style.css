@@ -28,7 +28,6 @@ a {
 }
 
 .hero-image {
-  background: image-url('silhouette_of_concert_crowd.jpg');
   background-attachment: fixed;
   height: 100vh;
 }
