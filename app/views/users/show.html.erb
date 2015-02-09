@@ -1,2 +1,27 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h2>Profile</h2>
+<div class="user-details">
+  <ul>
+    <li>Name: <%= @user.first_name %> <%= @user.last_name %> </li>
+    <li>Username: <%= @user.username %></li>
+    <li>Email: <%= @user.email %></li>
+    <li>Joined: <%= @user.created_at.strftime('%B %e, %Y')%></li>
+  </ul>
+</div>
+<div class="user-image">
+  <%= image_tag @user.image %>
+</div>
+
+<% if @user.reviews.any? %>
+  <h3>Reviews</h3>
+  <% @user.reviews.each do |review| %>
+    <p><%= review.title %></p>
+  <% end %>
+<% else %>
+  <p>You have no reviews.</p>
+<% end %>
+
+<%= link_to 'Edit profile', edit_user_path(@user) %>
+
+<% if @current_user.is_admin? %>
+<%= link_to 'Delete', @user, :method => 'delete', :data => {:confirm => "Are you sure?"} %>
+<% end %>
