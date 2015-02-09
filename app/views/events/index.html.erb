@@ -2,6 +2,7 @@
 <%= link_to('Add an Event', new_event_path) %>
 <% @events.each do |event| %>
   <ul>
+    <li>Artist: <%= event.artists.pluck(:name).join(', ') %></li>
     <li>Date: <%= event.date.strftime('%B %e, %Y') if event.date %></li>
     <li>Venue: <%= event.venue_name %></li>
     <li>Location: <%= event.venue_location %></li>
