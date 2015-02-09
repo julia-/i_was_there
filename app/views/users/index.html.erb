@@ -6,5 +6,7 @@
     <li>Username: <%= user.username %></li>
     <li>Email: <%= user.email %></li>
     <li>Joined: <%= user.created_at.strftime('%B %e, %Y')%></li>
+    <li><%= link_to('View Profile', user_path(user.id))%></li>
+    <li><%= link_to('Edit Profile', edit_user_path(user.id))%></li>
   </ul>
 <% end %>
