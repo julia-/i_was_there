@@ -2,28 +2,105 @@
   box-sizing: border-box;
 }
 
-header {
-  background-color: #000;
-  color: #fff;
-  margin: auto;
+body {
+  background-color: #fff;
+  color: #000;
 }
+
+header {
+  margin: 20px auto;
+  color: #000;
+  border-bottom: 1px solid #000;
+}
+
 h1 {
   margin: auto;
 }
+
+nav {
+
+}
+
 nav li {
-    display: inline-block;
-    padding: 10px;
-    list-style-type: none;
+  display: inline-block;
+  padding: 10px;
+  list-style-type: none;
 }
 
 nav a {
-  color: #fff;
 }
+
 a {
   text-decoration: none;
   color: #000;
 }
 
 .content-container {
-  margin: 20px auto;
+
 }
+
+.hero-image {
+  background: url('silhouette_of_concert_crowd.jpg');
+  background-attachment: fixed;
+  height: 100vh;
+}
+.btn-signup {
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+  padding: 12px 20px;
+}
+
+
+/*User Sign up Form*/
+.sign-up-form {
+  max-width: 80%;
+  margin: 20px auto;
+  padding: 2.5em;
+
+}
+
+.btn-form {
+  width: 100%;
+  background-color: #911146;
+  display: block;
+  margin-top: 30px;
+  padding: 0.7em;
+  border: 2px solid #911146;
+  color: #fff;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.form-group {
+  margin: 10px auto;
+}
+
+label {
+  display: block;
+  padding-bottom: 5px;
+  border-radius: 3px;
+}
+input {
+  display: block;
+  width: 100%;
+  line-height: 150%;
+  border: 1px solid #ccd6dd;
+/*  box-shadow: inset 0 1px 0 #eee,#fff 0 1px 0;*/
+  border-radius: 3px;
+}
+
+@media only screen and (min-width: 480px) {
+
+}
+@media only screen and (min-width: 768px) {
+
+}
+@media only screen and (min-width: 1140px) {
+
+}
+@media print {
+  
+}
+
+
+
