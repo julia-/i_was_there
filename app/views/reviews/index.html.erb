@@ -1,14 +1,12 @@
-<h1>Reviews</h1>
+<h2>Reviews</h2>
 <%= link_to('Add a new Review', new_review_path) %>
 <% @reviews.each do |review| %>
-<div class="review">
-  <ul class="review-details">
-      <li><%= review.title %></li>
-  </ul>
-  <div>
-      <p>
-        <%= review.content %>
-      </p>
+  <div class="review-container">
+    <h3><%= link_to review.title, review %></h3>
+    <div class="review-body">
+        <p>
+          <%= review.content %>
+        </p>
+    </div>
   </div>
-</div>
 <% end %>

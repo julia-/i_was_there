@@ -11,6 +11,7 @@
     <%= f.label :image %>
     <%= f.url_field :image %>
   </div>
+  <%= f.hidden_field :event_id, :value => params[:event_id] %>
   <div>
     <%= f.submit 'Submit' %>
   </div>

@@ -14,6 +14,7 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
+    @event = Event.find_by :id => params[:id]
   end
 
   def edit
@@ -37,7 +38,7 @@ class ReviewsController < ApplicationController
 
   private
   def review_params
-    params.require(:review).permit(:title, :content, :image)
+    params.require(:review).permit(:title, :content, :image, :event_id)
   end
 
   def check_if_user

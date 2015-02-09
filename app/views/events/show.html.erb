@@ -12,7 +12,12 @@
   <p><%= artist.name %></p>
 <% end %>
 
+<% @event.reviews.each do |review| %>
+  <p><%= link_to review.title, review %></p>
+<% end %>
+
 <%= link_to 'Add artist', add_artist_event_path(@event) %>
+<%= link_to 'Add review', new_event_review_path(@event) %>
 
 <%= link_to 'Edit event', edit_event_path(@event) %>
 
