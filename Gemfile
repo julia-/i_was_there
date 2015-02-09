@@ -27,6 +27,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'slim'
 gem 'font-awesome-rails'
 gem 'normalize-rails'
+gem 'rails_12factor', group: :production
 
 group :development do
   gem 'pry-rails'
