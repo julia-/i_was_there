@@ -26,17 +26,9 @@ nav li {
   padding: 10px;
   list-style-type: none;
 }
-
-nav a {
-}
-
 a {
   text-decoration: none;
   color: #000;
-}
-
-.content-container {
-
 }
 
 .hero-image {
@@ -88,7 +80,7 @@ input {
 /*  box-shadow: inset 0 1px 0 #eee,#fff 0 1px 0;*/
   border-radius: 3px;
 }
-
+/*
 @media only screen and (min-width: 480px) {
 
 }
@@ -103,4 +95,4 @@ input {
 }
 
 
-
+*/
