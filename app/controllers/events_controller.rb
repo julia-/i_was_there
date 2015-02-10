@@ -3,7 +3,10 @@ class EventsController < ApplicationController
   before_action :check_if_admin, :only => [:destroy]
 
   def index
-    # @events = Event.all
+    @events = Event.all
+  end
+
+  def results
     require 'open-uri'
 
     keyword = params[:keyword]
@@ -11,9 +14,12 @@ class EventsController < ApplicationController
     @past_events = result["events"]["event"]
 
     @past_events.each do |event|
-      Event.create :title => event["title"], :artist =>
-    end
+      @event_id = Event.find_by(:id_event => event["id"])
 
+      unless @event_id.present?
+        Event.create :title => event["title"], :artist => event["artists"]["artist"], :headliner => event["artists"]["headliner"], :date => event["startDate"], :venue_name => event["venue"]["name"], :city => event["venue"]["location"]["city"], :country => event["venue"]["location"]["country"], :id_event => event["id"], :latitude => event["venue"]["location"]["geo:point"]["geo:lat"], :longitude => event["venue"]["location"]["geo:point"]["geo:long"]
+      end
+    end
   end
 
   def create
@@ -60,7 +66,7 @@ class EventsController < ApplicationController
 
   private
   def event_params
-    params.require(:event).permit(:date, :venue_name, :venue_location, :image)
+    params.require(:event).permit(:title, :date, :headliner, :artist, :venue_name, :city, :country, :latitude, :longitude, :image, :id_event)
   end
 
   def check_if_user

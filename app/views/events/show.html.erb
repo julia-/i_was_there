@@ -1,16 +1,12 @@
-<h1>Show single event</h1>
-
+<h2><%= @event.title %></h2>
 <ul class="event-details">
   <ul>
+    <li>Headliner: <%= @event.headliner %></li>
     <li>Date: <%= @event.date.strftime('%B %e, %Y') if @event.date %></li>
     <li>Venue: <%= @event.venue_name %></li>
-    <li>Location: <%= @event.venue_location %></li>
+    <li>Location: <%= @event.city %></li>
   </ul>
 </ul>
-
-<% @event.artists.each do |artist| %>
-  <p><%= artist.name %></p>
-<% end %>
 
 <% @event.reviews.each do |review| %>
   <p><%= link_to review.title, review %></p>

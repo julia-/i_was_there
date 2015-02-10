@@ -4,3 +4,13 @@
 <div>
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, est libero laudantium ut voluptatum ipsa voluptatibus, omnis ea earum iste voluptates, eligendi maiores aspernatur. Rem beatae saepe nihil fugiat consequuntur.</p>
 </div>
+
+<%= form_tag "/events/results" do %>
+  <div>
+    <%= label_tag :keyword, 'Search' %>
+    <%= text_field_tag :keyword, nil, :autofocus => true, :required => true %>
+  </div>
+  <div>
+    <%= submit_tag 'Submit' %>
+  </div>
+<% end %>
