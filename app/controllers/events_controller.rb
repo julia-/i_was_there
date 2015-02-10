@@ -3,12 +3,17 @@ class EventsController < ApplicationController
   before_action :check_if_admin, :only => [:destroy]
 
   def index
-    @events = Event.all
-    # require 'open-uri'
-    # keyword = params[:keyword]
-    # result = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=artist.getpastevents&artist=#{keyword}&api_key=90a42b1096d510d21e3605d424c165b0&format=json").read)
-    # @headline = result["events"]["event"][0]["artists"]["headliner"]
-    # @artists = result["events"]["event"][0]["artists"].map {|a| a["artist"]}.join(',')
+    # @events = Event.all
+    require 'open-uri'
+
+    keyword = params[:keyword]
+    result = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=artist.getpastevents&artist=#{keyword}&api_key=90a42b1096d510d21e3605d424c165b0&format=json").read)
+    @past_events = result["events"]["event"]
+
+    @past_events.each do |event|
+      Event.create :title => event["title"], :artist =>
+    end
+
   end
 
   def create
@@ -52,15 +57,6 @@ class EventsController < ApplicationController
     event.destroy
     redirect_to events_path
   end
-
-  def search
-    # keyword = params[:keyword]
-    keyword = cher
-    result = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=artist.getpastevents&artist=#{keyword}&api_key=90a42b1096d510d21e3605d424c165b0&format=json").read)
-    artists = result["artists"]["artist"]["headliner"]
-    puts artists
-  end
-
 
   private
   def event_params

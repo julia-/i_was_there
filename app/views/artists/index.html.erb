@@ -5,3 +5,11 @@
     <li>Artist: <%= link_to(artist.name, artist) %></li>
   </ul>
 <% end %>
+
+<form action="/events">
+  <div class="label">
+    <label for="keyword">Search</label>
+    <input type="text" name="keyword" placeholder="Enter the artist" required>
+    <button type="submit">view artist</button>
+  </div>
+</form>

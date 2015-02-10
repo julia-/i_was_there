@@ -1,2 +1,18 @@
-<p><%= @headliner %></p>
-<p><%= @artists %></p>
+<% @past_events.each do |event| %>
+  <ul>
+    <li>Event name: <%= event["title"] %> </li>
+    <li>Date: <%= event["startDate"] %> </li>
+    <li>Headliner: <%= event["artists"]["headliner"] %></li>
+    <% if event["artists"]["artist"].class == Array %>
+      <li>Artists:</li>
+      <% event["artists"]["artist"].each do |artist| %>
+        <ul>
+          <li><%= artist %></li>
+        </ul>
+      <% end %>
+    <% else %>
+      <li>Artist: <%= event["artists"]["artist"] %> </li>
+    <% end %>
+    <li>Venue: <%= event["venue"]["name"] %>, <%= event["venue"]["location"]["city"] %>, <%= event["venue"]["location"]["country"] %></li>
+  </ul>
+<% end %>
