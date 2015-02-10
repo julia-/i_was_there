@@ -1,2 +1,27 @@
-<p><%= @headliner %></p>
-<p><%= @artists %></p>
+<h2>All Events</h2>
+<%= link_to('Add an Event', new_event_path) %> 
+
+<% @events.each do |event| %> 
+  <h3><%= event.title %></h3>
+  <ul>
+    <li>Headliner: <%= event.headliner %></li>
+    <li>Date: <%= event.date.strftime('%B %e, %Y') if event.date %></li>
+    <li>Venue: <%= event.venue_name %>
+    <% if event.city.length != nil %>
+      <li>City/State: <%= event.city %></li>
+    <% end %>
+    <li>Country: <%= event.country %></li>
+    <% if event.artist.class == Array %>
+      <li>Lineup:</li>
+        <ul>
+          <% event.artist.each do |artist| %>
+            <li><%= event.artist %></li>
+          <% end %>
+        </ul>
+    <% else %>
+      <% if event.artist != event.headliner %>
+        <li>Lineup: <%= event.artist %> </li>
+      <% end %>
+    <% end %>
+  </ul>
+<% end %>

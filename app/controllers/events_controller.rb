@@ -4,11 +4,22 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all
-    # require 'open-uri'
-    # keyword = params[:keyword]
-    # result = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=artist.getpastevents&artist=#{keyword}&api_key=90a42b1096d510d21e3605d424c165b0&format=json").read)
-    # @headline = result["events"]["event"][0]["artists"]["headliner"]
-    # @artists = result["events"]["event"][0]["artists"].map {|a| a["artist"]}.join(',')
+  end
+
+  def results
+    require 'open-uri'
+
+    keyword = params[:keyword]
+    result = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=artist.getpastevents&artist=#{keyword}&api_key=90a42b1096d510d21e3605d424c165b0&format=json").read)
+    @past_events = result["events"]["event"]
+
+    @past_events.each do |event|
+      @event_id = Event.find_by(:id_event => event["id"])
+
+      unless @event_id.present?
+        Event.create :title => event["title"], :artist => event["artists"]["artist"], :headliner => event["artists"]["headliner"], :date => event["startDate"], :venue_name => event["venue"]["name"], :city => event["venue"]["location"]["city"], :country => event["venue"]["location"]["country"], :id_event => event["id"], :latitude => event["venue"]["location"]["geo:point"]["geo:lat"], :longitude => event["venue"]["location"]["geo:point"]["geo:long"]
+      end
+    end
   end
 
   def create
@@ -53,18 +64,9 @@ class EventsController < ApplicationController
     redirect_to events_path
   end
 
-  def search
-    # keyword = params[:keyword]
-    keyword = cher
-    result = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=artist.getpastevents&artist=#{keyword}&api_key=90a42b1096d510d21e3605d424c165b0&format=json").read)
-    artists = result["artists"]["artist"]["headliner"]
-    puts artists
-  end
-
-
   private
   def event_params
-    params.require(:event).permit(:date, :venue_name, :venue_location, :image)
+    params.require(:event).permit(:title, :date, :headliner, :artist, :venue_name, :city, :country, :latitude, :longitude, :image, :id_event)
   end
 
   def check_if_user

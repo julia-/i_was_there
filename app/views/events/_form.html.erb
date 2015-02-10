@@ -1,15 +1,31 @@
 <%= form_for @event do |f| %>
   <div>
+    <%= f.label :title, 'Event name' %>
+    <%= f.text_field :title, :autofocus => true, :required => true %>
+  </div>
+  <div>
     <%= f.label :date %>
-    <%= f.date_select :date, :autofocus => true, :required => true %>
+    <%= f.date_select :date, :required => true %>
+  </div>
+  <div>
+    <%= f.label :headliner %>
+    <%= f.text_field :headliner, :required => true %>
+  </div>
+  <div>
+    <%= f.label :artist, 'Lineup' %>
+    <%= f.text_field :artist, :required => true %>
   </div>
   <div>
     <%= f.label :venue_name %>
     <%= f.text_field :venue_name, :required => true %>
   </div>
   <div>
-    <%= f.label :venue_location %>
-    <%= f.text_field :venue_location, :required => true %>
+    <%= f.label :city %>
+    <%= f.text_field :city, :required => true %>
+  </div>
+  <div>
+    <%= f.label :country %>
+    <%= f.text_field :country, :required => true %>
   </div>
   <div>
     <%= f.label :image %>
