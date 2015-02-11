@@ -1,7 +1,24 @@
-<h1>Artists</h1>
-<%= link_to('Add an Artist', new_artist_path) %>
-<% @artists.each do |artist| %>
-  <ul>
-    <li>Artist: <%= link_to(artist.name, artist) %></li>
-  </ul>
-<% end %>
+<section class="results-index">
+  <h2>Artists</h2>
+  <% if @artists.length == 0 %>
+    <p>Sorry! We haven't been able to find what you're looking for.</p>
+  <% end %>
+  <% @artists.each do |artist| %> 
+    <div class="artist">
+      <h3><%= artist.name %></h3>
+      <div>
+        <p><%= link_to('View artist', artist) %> | <%= link_to('View events', artist) %></p>
+      </div>
+    </div>
+  <% end %>
+  <div class="controls">
+    <%= link_to('Add new artist', new_artist_path) %> 
+  </div>
+</section>
+<section class="search-events">
+  <h2>Search artists</h2>
+  <%= form_tag(artists_path, :method => "get", id: "search-form", :enforce_utf8 => false) do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Artists" %>
+    <%= submit_tag "Search", :name => nil %>
+  <% end %>
+</section>

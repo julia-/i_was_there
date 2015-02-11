@@ -20,4 +20,5 @@ Rails.application.routes.draw do
   delete '/login' => 'session#destroy'
 
   post '/events/results' => 'events#results'
+  post '/artists/results' => 'artists#results'
 end

@@ -1,23 +1,22 @@
-<h1><%= @artist.name %></h1>
-<div class="artist-details">
-  <ul>
-    <li>Name: <%= @artist.name %></li>
-    <li>Hometown: <%= @artist.city %>, <%= @artist.country %> </li>
-    <li>Genre: <%= @artist.genre %></li>
-  </ul>
-</div>
-<div class="artist-bio">
-  <p><%= @artist.bio %></p>
-</div>
-
-<% @artist.events.each do |event| %>
-<p><%= link_to event.date, event %></p>
-<% end %>
-
-<ul>
-  <li><%= link_to 'Add an event', new_artist_event_path(@artist) %></li>
-  <li><%= link_to 'Edit', edit_artist_path(@artist) %></li>
-  <% if @current_user.is_admin? %>
-    <li><%= link_to 'Delete artist', @artist, :method => 'delete', :data => {:confirm => "Are you sure?"} %></li>
+<section class="results-index">
+  <h2><%= @artist.name %></h2>
+  <div>
+    <div><%= simple_format(@artist.bio) %></div>
+  </div>
+  <div class="controls">
+    <ul>
+      <% if @current_user.is_admin? %>
+        <li><%= link_to 'Delete artist', @artist, :method => 'delete', :data => {:confirm => "Are you sure?"} %> | </li>
+      <% end %>
+      <li><%= link_to 'Edit Artist', edit_artist_path(@artist) %> | </li>
+      <li><%= link_to 'Add event', new_artist_event_path(@artist) %></li>
+    </ul>
+  </div>
+</section>
+<section class="search-events">
+  <%= image_tag @artist.image %>
+  <% @artist.events.each do |event| %>
+    <p><%= link_to event.date, event %></p>
   <% end %>
-</ul>
+</section>
+

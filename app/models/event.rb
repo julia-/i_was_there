@@ -10,7 +10,7 @@
 #  updated_at :datetime
 #  title      :string
 #  headliner  :string
-#  artist     :string
+#  artist     :text
 #  city       :string
 #  country    :string
 #  id_event   :string
@@ -21,4 +21,8 @@
 class Event < ActiveRecord::Base
   has_and_belongs_to_many :artists
   has_many :reviews
+
+  def self.search(query)
+    where("title ilike ? OR headliner ilike ?", "%#{query}%", "%#{query}%")
+  end
 end

@@ -3,7 +3,11 @@ class ReviewsController < ApplicationController
   before_action :check_if_owner, :only => [:edit, :update]
 
   def index
-    @reviews = Review.all
+    if params[:search]
+      @reviews = Review.search(params[:search]).order('created_at DESC')
+    else
+      @reviews = Review.order('created_at DESC')
+    end
   end
 
   def create
@@ -48,5 +52,8 @@ class ReviewsController < ApplicationController
   def check_if_owner
     @owner = @current_user.reviews.find_by(id: params[:id])
     redirect_to reviews_path if @owner.nil?
+  end
+  def check_if_admin
+    redirect_to(root_path) unless @current_user.present? && @current_user.is_admin?
   end
 end

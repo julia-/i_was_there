@@ -1,27 +1,30 @@
-<h2>All Events</h2>
-<%= link_to('Add an Event', new_event_path) %> 
-
-<% @events.each do |event| %> 
-  <h3><%= event.title %></h3>
-  <ul>
-    <li>Headliner: <%= event.headliner %></li>
-    <li>Date: <%= event.date.strftime('%B %e, %Y') if event.date %></li>
-    <li>Venue: <%= event.venue_name %>
-    <% if event.city.length != nil %>
-      <li>City/State: <%= event.city %></li>
-    <% end %>
-    <li>Country: <%= event.country %></li>
-    <% if event.artist.class == Array %>
-      <li>Lineup:</li>
-        <ul>
-          <% event.artist.each do |artist| %>
-            <li><%= event.artist %></li>
-          <% end %>
-        </ul>
-    <% else %>
-      <% if event.artist != event.headliner %>
-        <li>Lineup: <%= event.artist %> </li>
-      <% end %>
-    <% end %>
-  </ul>
-<% end %>
+<section class="results-index">
+  <h2>Events</h2>
+  <% if @events.length == 0 %>
+    <p>Sorry! We haven't been able to find what you're looking for.</p>
+  <% end %>
+  <% @events.each do |event| %> 
+    <div class="event">
+      <h3><%= event.title %></h3>
+      <ul>
+        <li><span class="list-label">Headliner</span> <%= event.headliner %></li>
+        <li><span class="list-label">Date</span> <%= event.date.strftime('%B %e, %Y') if event.date %></li>
+        <li><span class="list-label">Venue</span> <%= event.venue_name %>
+        <li><span class="list-label">Country</span> <%= event.country %></li>
+      </ul>
+      <div>
+        <p><%= link_to('View event', event) %> | <%= link_to('View reviews', event) %></p>
+      </div>
+    </div>
+  <% end %>
+  <div class="controls">
+    <%= link_to('Add new event', new_event_path) %> 
+  </div>
+</section>
+<section class="search-events">
+  <h2>Search Events</h2>
+  <%= form_tag(events_path, :method => "get", id: "search-form", :enforce_utf8 => false) do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Events" %>
+    <%= submit_tag "Search", :name => nil %>
+  <% end %>
+</section>

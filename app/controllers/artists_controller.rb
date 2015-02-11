@@ -3,8 +3,44 @@ class ArtistsController < ApplicationController
   before_action :check_if_admin, :only => [:destroy]
 
   def index
-    @artists = Artist.order(:name)
+    if params[:search]
+      @artists = Artist.search(params[:search]).order(:name)
+    else
+      @artists = Artist.order(:name)
+    end
   end
+
+   def results
+    require 'open-uri'
+
+    keyword = params[:keyword]
+    result = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=#{keyword}&api_key=90a42b1096d510d21e3605d424c165b0&format=json").read)
+
+    @artist_results = result["artist"]
+
+    artist = Artist.create :name => @artist_results["name"], :bio =>
+    @artist_results["bio"]["summary"], :image => @artist_results["image"][4]["#text"]
+
+    # @artist_results = [@artist_results] unless @artist_results.is_a? Array
+
+    # @artist_results.each do |a|
+      # @lastfm_id = Artist.find_by(:lastfm_id => a["mbid"])
+        # unless a["name"].is_a? Array
+        #   a["name"] = [ a["name"] ]
+        # end
+      # unless @lastfm_id.present?
+        # artist = Event.new do |a|
+        #   artist.name = ["name"]
+        #   artist.image = a["image"][4]
+        #   artist.bio = a["bio"]["summary"]
+          # artist.lastfm_id = a["mbid"]
+        # end
+
+        # artist.save
+      # end
+    # end
+  end
+
 
   def create
     artist = Artist.create artist_params
