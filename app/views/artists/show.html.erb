@@ -11,7 +11,7 @@
   </div>
 </section>
 <section class="artist-image">
-  <%= image_tag @artist.image %>
+  <%= image_tag @artist.image_url %>
   <% @artist.events.each do |event| %>
     <p><%= link_to event.date, event %></p>
   <% end %>
