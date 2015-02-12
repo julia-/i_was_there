@@ -1,7 +1,8 @@
-@font-family {
-  font-family: url('Nexa Bold.otf');
-  font-family: url('CODE Bold.otf')
+@font-face {
+  font-family: "Nexa Bold";
+  src: url(/assets/Nexa-Bold.otf) format("truetype");
 }
+
 * {
   box-sizing: border-box;
 }
