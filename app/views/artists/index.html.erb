@@ -6,9 +6,12 @@
   <% @artists.each do |artist| %> 
     <div class="artist">
       <h3><%= artist.name %></h3>
-      <div>
-        <p><%= link_to('View artist', artist) %> | <%= link_to('View events', artist) %></p>
+      <div class="thumb-container">
+        <%= image_tag artist.image %>
       </div>
+    </div>
+    <div>
+      <p><%= link_to('View artist', artist) %> | <%= link_to('View events', artist) %></p>
     </div>
   <% end %>
   <div class="controls">
