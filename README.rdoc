@@ -1,7 +1,7 @@
-# README
+== README
 
-## I was there
+= I was there
 
-Web application that allows users to search for artists and events using the [Last.FM API](http://www.last.fm/api "Last.FM API"). Users can submit reviews and read reviews from other users.
+Web application that allows users to search for artists and events using the <a href="http://www.last.fm/api" title="Last.FM API">Last.FM API</a>. Users can submit reviews and read reviews from other users.
 
 
