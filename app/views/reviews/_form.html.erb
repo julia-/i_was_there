@@ -11,7 +11,9 @@
     <%= f.label :image %>
     <%= f.url_field :image %>
   </div>
-  <%= f.hidden_field :event_id, :value => params[:event_id] %>
+  <% if @review.new_record? %>
+    <%= f.hidden_field :event_id, :value => params[:event_id] %>
+  <% end %>
   <div class="form-group">
     <%= f.submit 'Submit' %>
   </div>

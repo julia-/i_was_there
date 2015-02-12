@@ -23,7 +23,6 @@ class ReviewsController < ApplicationController
 
   def edit
     @review = Review.find params[:id]
-    @event = Event.find_by :id => params[:event_id]
   end
 
   def show
@@ -31,7 +30,8 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    review = Review.create review_params
+    review = Review.find params[:id]
+    review.update review_params
     redirect_to review
   end
 

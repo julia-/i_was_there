@@ -5,11 +5,11 @@
 * {
   box-sizing: border-box;
 }
-
+html,
 body {
   background-color: #fff;
   color: #000;
-  min-height: 100vh;
+  height: 100%;
 }
 
 h1, h2, h3 {
@@ -36,19 +36,14 @@ h2 {
 a {
   text-decoration: none;
 }
-header {
-  min-height: 15vh;
-}
+
 header, footer {
   display: inline-block;
   width: 100%;
   background: #000;
   padding: 20px;
   color: #fff;
-}
-
-footer {
-  min-height: 10vh;
+  min-height: 15vh;
 }
 
 .flex-container {
