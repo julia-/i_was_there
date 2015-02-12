@@ -2,7 +2,6 @@
   font-family: url('Nexa Bold.otf');
   font-family: url('CODE Bold.otf')
 }
-
 * {
   box-sizing: border-box;
 }
@@ -11,8 +10,6 @@ body {
   background-color: #fff;
   color: #000;
   margin: auto;
-  // font-family: Helvetica, arial, sans-serif;
-  // line-height: 150%;
 }
 h1, h2, h3 {
   font-family: 'Nexa Bold';
@@ -43,7 +40,6 @@ a {
   display: flex;
   flex-direction: row;
   margin: auto;
-  min-height: 100vh;
 }
 
 .artist {
@@ -51,6 +47,7 @@ a {
   display: -webkit-flex;
   display: flex;
   flex-direction: row;
+
 }
 
 header, footer {
@@ -61,7 +58,6 @@ header, footer {
   color: #fff;
   padding: 20px;
 }
-
 header > h1, nav {
   display: inline-block;
 }
@@ -70,16 +66,10 @@ nav {
   position: absolute;
   right: 10px;
 }
-
 nav li {
   display: inline-block;
   padding: 10px;
 }
-a {
-  text-decoration: none;
-  color: #000;
-}
-
 nav a {
   color: #FF4242;
   text-transform: uppercase;
@@ -115,7 +105,6 @@ img {
           flex: 3 1 60%;
   -webkit-order: 1;
           order: 1;
-
 }
 .thumb-container {
   margin: 20px;
@@ -164,8 +153,8 @@ img {
   color: #FF4242;
   padding: 0 3px;
 }
+
 .content-container {
-  max-width: 100%;
   padding: 20px;
 }
 .content-container > p {
@@ -193,7 +182,6 @@ img {
 .form-container form,
 .signin-container form {
   margin: 20px auto;
-  padding: 2.5em;
 }
 // FOOTER
 
@@ -223,7 +211,6 @@ img {
   display: inline-block;
   vertical-align: middle; 
 }
-
 input {
   display: inline-block;
   width: 100%;
@@ -232,6 +219,7 @@ input {
   border-radius: 3px;
   margin: 5px auto;
   padding: 13px;
+
 }
 
 input[type="submit"] {
