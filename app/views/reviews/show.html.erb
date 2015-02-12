@@ -1,22 +1,21 @@
 <div class="content-container">
-  <h2><%= @review.title %></h2>
+  <h2 class="border"><%= @review.title %></h2>
   <ul>
     <li><span class="list-label">Event</span> <%= @review.event.title %></li>
     <li><span class="list-label">Date</span> <%= @review.event.date.strftime('%d %B %Y') %></li>
     <li><span class="list-label">Venue</span> <%= @review.event.venue_name %>, <%= @review.event.country %> </li>
   </ul>
-  <div>
+  <div class="body-container">
     <p><%= simple_format(@review.content) %></p>
+    <ul>
+      <li><span class="list-label">Author</span> <%= @review.user.first_name %> <%= @review.user.last_name %></li>
+      <li><span class="list-label">Posted</span> <%= @review.created_at.strftime('%d %B %Y') %></li>
+    </ul>
   </div>
-  <ul>
-    <li><span class="list-label">Author</span> <%= @review.user.first_name %> <%= @review.user.last_name %></li>
-    <li><span class="list-label">Posted</span> <%= @review.created_at.strftime('%d %B %Y') %></li>
-  </ul>
   <div class="controls">
-    <%= link_to 'Edit review', edit_review_path(@review) %> | 
+    <%= link_to 'Edit review', edit_review_path(@review) %> 
     <% if @current_user.is_admin? %>
-      <%= link_to 'Delete review', @event, :method => 'delete', :data => {:confirm => "Are you sure?"} %>
+    <%= link_to ' | Delete review', @event, :method => 'delete', :data => {:confirm => "Are you sure?"} %>
     <% end %>
   </div>
-
 </div>

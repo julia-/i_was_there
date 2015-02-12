@@ -334,6 +334,13 @@ img {
   display: flex;
   flex-direction: row;
 }
+
+.border {
+  border-bottom: 3px solid #000;
+}
+.body-container {
+  border-bottom: 2px solid #000;
+}
 // @media only screen and (min-width: 480px) {
 
 // }

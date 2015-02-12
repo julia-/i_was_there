@@ -23,6 +23,7 @@ class ReviewsController < ApplicationController
 
   def edit
     @review = Review.find params[:id]
+    @event = Event.find_by :id => params[:event_id]
   end
 
   def show
