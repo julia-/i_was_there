@@ -17,9 +17,11 @@ class ArtistsController < ApplicationController
     result = JSON.parse(open(URI.encode("http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=#{keyword}&api_key=90a42b1096d510d21e3605d424c165b0&format=json")).read)
 
     @artist_results = result["artist"]
+    @artist_id = Artist.find_by(:mbid => @artist_results["mbid"])
 
-    artist = Artist.create :name => @artist_results["name"], :bio =>
-    @artist_results["bio"]["summary"], :image => @artist_results["image"][4]["#text"]
+    unless @artist_id.present?
+      artist = Artist.create :name => @artist_results["name"], :bio => @artist_results["bio"]["summary"], :image => @artist_results["image"][4]["#text"], :mbid => @artist_results["mbid"]
+    end
 
     # @artist_results = [@artist_results] unless @artist_results.is_a? Array
 
@@ -74,7 +76,7 @@ class ArtistsController < ApplicationController
 
   private
   def artist_params
-    params.require(:artist).permit(:name, :genre, :city, :country, :bio, :image)
+    params.require(:artist).permit(:name, :genre, :city, :country, :bio, :image, :mbid)
   end
 
   def check_if_user

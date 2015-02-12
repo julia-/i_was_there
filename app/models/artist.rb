@@ -11,6 +11,7 @@
 #  image      :text
 #  created_at :datetime
 #  updated_at :datetime
+#  mbid       :string
 #
 
 class Artist < ActiveRecord::Base
