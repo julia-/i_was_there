@@ -19,4 +19,7 @@ class User < ActiveRecord::Base
   has_many :reviews, inverse_of: :user
   validates :username, :presence => true, :uniqueness => true
   validates :email, :presence => true, :uniqueness => true
+  def self.search(query)
+    where("first_name ilike ? OR last_name ilike? OR username ilike? OR email ilike?  ", "%#{query}%", "%#{query}%", "%#{query}%", "%#{query}%")
+  end
 end

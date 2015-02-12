@@ -1,19 +1,18 @@
-<h2><%= flash[:error] if flash[:error].present? %></h2>
-
-<h1>Log in</h1>
-
-<div>
+<div class="signin-container">
+  <h2>Sign in</h2>
+  <h3><%= flash[:error] if flash[:error].present? %></h3>
   <%= form_tag login_path do %>
-    <div>
+    <div class="form-group">
       <%= label_tag :username %>
-      <%= text_field_tag :username, nil, :autofocus => true, :required => true %>
+      <%= text_field_tag :username, nil, :autofocus => true, :required => true, :placeholder => 'Username' %>
     </div>
-    <div>
+    <div class="form-group">
       <%= label_tag :password %>
-      <%= password_field_tag :password, nil, :required => true %>
+      <%= password_field_tag :password, nil, :required => true, :placeholder => 'Password' %>
     </div>
-    <div>
+    <div class="form-group">
       <%= submit_tag 'Login' %>
     </div>
   <% end %>
+  <%= link_to('Don\'t have an account? Sign up!', new_user_path, class: 'btn-signup')  %>
 </div>

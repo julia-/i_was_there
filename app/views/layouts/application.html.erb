@@ -8,18 +8,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
-    <div class="main-container">
-      <header class="header-background">
-        <h1>I was there</h1>
-        <nav>
-          <ul>
-            <%== nav_menu %>
-          </ul>
-        </nav>
-      </header>
-      <div class="content-container">
-        <%= yield %>
-      </div>
+    <header class="header-background">
+      <h1><%= link_to 'I was there', root_path %></h1>
+      <nav>
+        <ul>
+          <%== nav_menu %>
+        </ul>
+      </nav>
+    </header>
+    <div class="flex-container">
+      <%= yield %>
     </div>
+    <footer>
+      <div class="contact">
+        <ul>
+          <li>Made with <i class="fa fa-heart"></i> by <a href="http://juliaryan.io/">Julia</a></li>
+          <li><a href="https://github.com/julia-"><i class="fa fa-github fa-lg"></i></a></li>
+          <li><a href="https://twitter.com/juliax___"><i class="fa fa-twitter fa-lg"></i></a></li>
+          <li><a href="http://stackoverflow.com/users/4463771/julia"><i class="fa fa-stack-overflow fa-lg"></i></a></li>
+          <li><a href="http://www.last.fm/user/juliax_"><i class="fa fa-lastfm fa-lg"></i></a></li>
+          <li><a href="http://au.linkedin.com/in/juliaryan/"><i class="fa fa-linkedin fa-lg"></i></a></li>
+        </ul>
+      </div>
+      <div class="credit">
+        <p class="credit-details">Powered by</p>
+        <%= image_tag('lastfm_red_small.png', class: "credit-details") %>
+      </div>
+    </footer>
   </body>
 </html>

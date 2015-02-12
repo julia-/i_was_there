@@ -1,0 +1,17 @@
+<section class="results-index">
+  <h2><%= @artist_results["name"] %></h2>
+  <div>
+    <div><%= simple_format(@artist_results["bio"]["summary"]) %></div>
+    <div class="artist-image"><%= image_tag @artist_results["image"][4]["#text"] %></div>
+  </div>
+  <div class="controls">
+    <%= link_to('Add new event', new_event_path) %> 
+  </div>
+</section>
+<section class="search-events">
+  <h2>Search artists</h2>
+  <%= form_tag "/artists/results" do %>
+      <%= text_field_tag :keyword, nil, :autofocus => true, :required => true %>
+      <%= submit_tag 'Submit' %>
+  <% end %>
+</section>

@@ -16,4 +16,8 @@ class Review < ActiveRecord::Base
   belongs_to :user, inverse_of: :reviews
   belongs_to :event, inverse_of: :reviews
   has_many :artists, :through => :events
+
+  def self.search(query)
+    where("title ilike ? OR content ilike ?", "%#{query}%", "%#{query}%")
+  end
 end

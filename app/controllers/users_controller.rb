@@ -2,7 +2,11 @@ class UsersController < ApplicationController
   before_action :check_if_admin, :only => [:index, :destroy]
   
   def index
-    @users = User.all
+    if params[:search]
+      @users = User.search(params[:search]).order(:last_name)
+    else
+      @users = User.order(:last_name)
+    end
   end
 
   def create

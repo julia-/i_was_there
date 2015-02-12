@@ -2,8 +2,13 @@ class EventsController < ApplicationController
   before_action :check_if_user, :only => [:new]
   before_action :check_if_admin, :only => [:destroy]
 
+  # All event records stored display when page loads.
   def index
-    @events = Event.all
+    if params[:search]
+      @events = Event.search(params[:search]).order(:date)
+    else
+      @events = Event.order(:date)
+    end
   end
 
   def results
@@ -11,13 +16,33 @@ class EventsController < ApplicationController
 
     keyword = params[:keyword]
     result = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=artist.getpastevents&artist=#{keyword}&api_key=90a42b1096d510d21e3605d424c165b0&format=json").read)
+
     @past_events = result["events"]["event"]
 
-    @past_events.each do |event|
-      @event_id = Event.find_by(:id_event => event["id"])
+    @past_events = [@past_events] unless @past_events.is_a? Array
 
+    @past_events.each do |e|
+      @event_id = Event.find_by(:id_event => e["id"])
+      
       unless @event_id.present?
-        Event.create :title => event["title"], :artist => event["artists"]["artist"], :headliner => event["artists"]["headliner"], :date => event["startDate"], :venue_name => event["venue"]["name"], :city => event["venue"]["location"]["city"], :country => event["venue"]["location"]["country"], :id_event => event["id"], :latitude => event["venue"]["location"]["geo:point"]["geo:lat"], :longitude => event["venue"]["location"]["geo:point"]["geo:long"]
+        unless e["artists"]["artist"].is_a? Array
+          e["artists"]["artist"] = [ e["artists"]["artist"] ]
+        end
+
+        event = Event.new do |event|
+          event.title = e["title"]
+          event.artist = e["artists"]["artist"].join(', ')
+          event.headliner = e["artists"]["headliner"]
+          event.date = e["startDate"]
+          event.venue_name = e["venue"]["name"]
+          event.city = e["venue"]["location"]["city"]
+          event.country = e["venue"]["location"]["country"]
+          event.id_event = e["id"]
+          event.latitude = e["venue"]["location"]["geo:point"]["geo:lat"]
+          event.longitude = e["venue"]["location"]["geo:point"]["geo:long"]
+        end
+
+        event.save
       end
     end
   end
@@ -66,7 +91,7 @@ class EventsController < ApplicationController
 
   private
   def event_params
-    params.require(:event).permit(:title, :date, :headliner, :artist, :venue_name, :city, :country, :latitude, :longitude, :image, :id_event)
+    params.require(:event).permit(:title, :date, :headliner, :artist, :venue_name, :city, :country, :latitude, :longitude, :image, :id_event, :search)
   end
 
   def check_if_user

@@ -1,16 +1,26 @@
-<div class="hero-image">
-  
-</div>
-<div>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem, est libero laudantium ut voluptatum ipsa voluptatibus, omnis ea earum iste voluptates, eligendi maiores aspernatur. Rem beatae saepe nihil fugiat consequuntur.</p>
-</div>
+<div class="content-container">
+    <p>Parks Swoopeses April Swanson schlemiel communists Monday worst department breakfast business melancholy nightmare mustache Horsemeals fighting mustacheoed deviled scam Capitalism slashing rights bandsaw hellscape property.</p>
+    <p>Privatized profits Mulligan rectangle effigy Capitalism ex-wife breakfast greedy greatness manager turkey preternaturally woodwork whittel ribs nightmare Humpsville mustacheoed parks mustache piglet hate communists Ron toolbox wreathes rage meat.</p>
+    <p>Eggporkalypse alcohol philosophy Tammy ex-wife Lagavulin tornado greatness Horsemeals hammer horrible ribs property man rectangle business melancholy masculine Humpsville hate tolerance cloven sander buffet.</p>
+  <div class="form-container">
+    <%= form_tag "/artists/results" do %>
+      <div class="form-group">
+        <%= label_tag :keyword, 'Search for an artist' %>
+        <%= text_field_tag :keyword, nil, :autofocus => true, :required => true, :placeholder => 'Enter artist name' %>
+      </div>
+      <div>
+        <%= submit_tag 'Submit' %>
+      </div>
+    <% end %>
 
-<%= form_tag "/events/results" do %>
-  <div>
-    <%= label_tag :keyword, 'Search' %>
-    <%= text_field_tag :keyword, nil, :autofocus => true, :required => true %>
+    <%= form_tag "/events/results" do %>
+      <div class="form-group">
+        <%= label_tag :keyword, 'Search for an event' %>
+        <%= text_field_tag :keyword, nil, :autofocus => true, :required => true, :placeholder => 'Enter event or artist name'%>
+      </div>
+      <div>
+        <%= submit_tag 'Submit' %>
+      </div>
+    <% end %> 
   </div>
-  <div>
-    <%= submit_tag 'Submit' %>
-  </div>
-<% end %>
+</div>

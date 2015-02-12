@@ -1,12 +1,26 @@
-<h2>Reviews</h2>
-<%= link_to('Add a new Review', new_review_path) %>
-<% @reviews.each do |review| %>
-  <div class="review-container">
-    <h3><%= link_to review.title, review %></h3>
-    <div class="review-body">
+<section class="results-index">
+  <h2>Reviews</h2>
+  <% if @reviews.length == 0 %>
+    <p>Sorry! We haven't been able to find what you're looking for.</p>
+  <% end %>
+  <% @reviews.each do |review| %>
+    <div class="review">
+      <h3><%= review.title %></h3>
+      <div class="review-body">
         <p>
-          <%= review.content %>
+          <%= truncate(review.content, :length => 450) %> <%= link_to 'Read more', review %>
         </p>
+      </div>
     </div>
+  <% end %>
+  <div class="controls">
+    <%= link_to('Add new review', new_review_path) %>
   </div>
-<% end %>
+</section>
+<section class="search-events">
+  <h2>Search reviews</h2>
+  <%= form_tag(reviews_path, :method => "get", id: "search-form", :enforce_utf8 => false) do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Reviews" %>
+    <%= submit_tag "Search", :name => nil %>
+  <% end %>
+</section>

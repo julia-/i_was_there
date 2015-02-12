@@ -1,3 +1,8 @@
+@font-family {
+  font-family: url('Nexa Bold.otf');
+  font-family: url('CODE Bold.otf')
+}
+
 * {
   box-sizing: border-box;
 }
@@ -5,23 +10,73 @@
 body {
   background-color: #fff;
   color: #000;
+  margin: auto;
+  // font-family: Helvetica, arial, sans-serif;
+  // line-height: 150%;
 }
-
-header {
-  margin: 20px auto;
-  color: #000;
-  border-bottom: 1px solid #000;
+h1, h2, h3 {
+  font-family: 'Nexa Bold';
 }
-
 h1 {
+  font-size: 50px;
+  text-transform: uppercase;
+  position: absolute;
+  left: 40px;
+  margin: 12px auto;
+}
+h1 a {
+  color: #fff;
+}
+h2 {
+  font-size: 34px;
+  text-transform: uppercase;
+  margin-bottom: 25px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.flex-container {
+  max-width: 80%;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: row;
   margin: auto;
 }
 
+<<<<<<< HEAD
+=======
+.artist {
+  max-width: 60%;
+  display: -webkit-flex;
+  display: flex;
+  flex-direction: row;
+
+}
+
+header, footer {
+  display: inline-block;
+  width: 100%;
+  height: 15vh;
+  background: #000;
+  color: #fff;
+  padding: 20px;
+}
+header > h1, nav {
+  display: inline-block;
+}
+
+nav {
+  position: absolute;
+  right: 10px;
+}
+>>>>>>> incorporate-api
 nav li {
   display: inline-block;
   padding: 10px;
-  list-style-type: none;
 }
+<<<<<<< HEAD
 a {
   text-decoration: none;
   color: #000;
@@ -30,47 +85,249 @@ a {
 .hero-image {
   background-attachment: fixed;
   height: 100vh;
+=======
+nav a {
+  color: #FF4242;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: 'Nexa Bold';
+  padding-top: 3px;
 }
-.btn-signup {
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  border-radius: 5px;
-  padding: 12px 20px;
+nav a:hover {
+  border-top: 2px solid #FF4242;
 }
+
+ul {
+  padding: 0;
+  list-style-type: none
+}
+img {
+  border: 3px solid #000;
+  max-height: 150px; 
+}
+.profile-images {
+  margin-top: 130px;
+    padding: 0 10px 0 30px;
+  -webkit-flex: 1 6 35%;
+          flex: 1 6 35%;
+  -webkit-order: 2;
+          order: 2;
+}
+.results-index {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 40px;
+  -webkit-flex: 3 1 60%;
+          flex: 3 1 60%;
+  -webkit-order: 1;
+          order: 1;
+}
+.thumb-container {
+  margin: 20px;
+}
+.results-index a {
+  text-transform: uppercase;
+  color: #FF4242;
+  font-weight: bold;
+}
+
+.results-index a:hover {
+  border-bottom: 2px solid #FF4242;
+  color: #000;
+}
+
+.search-events {
+  margin: 20px auto;
+  padding: 0 10px 0 30px;
+  -webkit-flex: 1 6 35%;
+          flex: 1 6 35%;
+  -webkit-order: 2;
+          order: 2;
+}
+.event, .review {
+  margin-bottom: 40px;
+}
+.event > h3, .review > h3, {
+  text-transform: uppercase;
+  border-bottom: 2px solid #000;
+}
+.list-label {
+  text-transform: uppercase;
+  font-weight: bold;
+  padding-right: 3px;
+  text-indent: none;
+}
+
+.controls {
+  margin: 40px auto;
+}
+
+.controls > ul > li {
+  display: inline-block;
+>>>>>>> incorporate-api
+}
+.fa {
+  color: #FF4242;
+  padding: 0 3px;
+}
+
+.content-container {
+  padding: 20px;
+}
+.content-container > p {
+  padding: 0 20px;
+}
+.form-container {
+  max-width: 45%;
+  margin: 30px auto;
+  padding: 20px;
+}
+.signin-container {
+  max-width: 45%;
+  margin: auto;
+  padding: 20px;
+}
+.signin-container form div {
+  padding-top: 20px;
+}
+.form-container > form > div > label,
+.signin-container > form > div > label
+ {
+  font-family: 'Nexa Bold';
+  font-size: 20px;
+}
+.form-container form,
+.signin-container form {
+  margin: 20px auto;
+<<<<<<< HEAD
+  padding: 2.5em;
+=======
+>>>>>>> incorporate-api
+}
+// FOOTER
+
+.contact > ul > li {
+  display: inline-block;
+}
+.contact a {
+  color: #FF4242;
+}
+.contact a:hover {
+  color: #fff;
+}
+.contact > ul {
+  text-align: center;
+}
+
+.contact {
+  position: absolute;
+  left: 30px;
+}
+.credit {
+  position: absolute;
+  right: 30px;
+}
+
+.credit-details {
+  display: inline-block;
+  vertical-align: middle; 
+}
+
+// nav a {
+// }
+
+// a {
+//   text-decoration: none;
+//   color: #000;
+// }
+
+
+
+// .tinted-image {
+//   background: 
+//     /* top, transparent red, faked with gradient */ 
+//     linear-gradient(
+//       rgba(255, 0, 0, 0.45), 
+//       rgba(255, 0, 0, 0.45)
+//     ),
+//     /* bottom, image */
+//     url(image.jpg);
+// }
+// .btn-signup {
+//   border: 1px solid rgba(255, 255, 255, 0.8);
+//   border-radius: 5px;
+//   padding: 12px 20px;
+// }
 
 
 /*User Sign up Form*/
-.sign-up-form {
-  max-width: 80%;
-  margin: 20px auto;
-  padding: 2.5em;
-}
+// .sign-up-form {
+//   max-width: 80%;
+//   margin: 20px auto;
+//   padding: 2.5em;
 
-.btn-form {
-  width: 100%;
-  background-color: #911146;
-  display: block;
-  margin-top: 30px;
-  padding: 0.7em;
-  border: 2px solid #911146;
-  color: #fff;
-  font-size: 16px;
-  text-transform: uppercase;
-}
+// }
 
-.form-group {
-  margin: 10px auto;
-}
+// .btn-form {
+//   width: 100%;
+//   background-color: #911146;
+//   display: block;
+//   margin-top: 30px;
+//   padding: 0.7em;
+//   border: 2px solid #911146;
+//   color: #fff;
+//   font-size: 16px;
+//   text-transform: uppercase;
+// }
 
-label {
-  display: block;
-  padding-bottom: 5px;
-  border-radius: 3px;
-}
+// .form-group {
+//   margin: 10px auto;
+// }
+
+// label {
+//   display: inline-block;
+//   padding-bottom: 5px;
+//   border-radius: 3px;
+// }
 input {
-  display: block;
+  display: inline-block;
   width: 100%;
   line-height: 150%;
   border: 1px solid #ccd6dd;
   border-radius: 3px;
 }
+
+input[type="submit"] {
+  background-color: #FF4242;
+  border: 1px solid #FF4242;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.signin-container > .btn-signup {
+  background-color: #FF837E;
+  border: 1px solid #FF837E;
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-weight: 600;
+  display: inline-block;
+  width: 100%;
+  line-height: 150%;
+  margin: 5px auto;
+  padding: 13px;
+  color: #fff;
+}
+// @media only screen and (min-width: 480px) {
+
+// }
+// @media only screen and (min-width: 768px) {
+
+// }
+// @media only screen and (min-width: 1140px) {
+
+// }
+// @media print {
+  
+// }
+
 

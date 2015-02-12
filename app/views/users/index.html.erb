@@ -1,12 +1,26 @@
-<h1>Users</h1>
-<% @users.each do |user| %>
-  <%= image_tag user.image %>
-  <ul>
-    <li>Name: <%= user.first_name %> <%= user.last_name %></li>
-    <li>Username: <%= user.username %></li>
-    <li>Email: <%= user.email %></li>
-    <li>Joined: <%= user.created_at.strftime('%B %e, %Y')%></li>
-    <li><%= link_to('View Profile', user_path(user.id))%></li>
-    <li><%= link_to('Edit Profile', edit_user_path(user.id))%></li>
-  </ul>
-<% end %>
+<section class="results-index">
+  <h2>User Profiles</h2>
+  <% @users.each do |user| %>
+    <div class="event">
+      <h3><%= user.first_name %> <%= user.last_name %></h3>
+      <ul>
+        <li><span class="list-label">Username</span> <%= user.username %></li>
+        <li><span class="list-label">Email</span> <%= user.email %></li>
+        <li><span class="list-label">Joined</span> <%= user.created_at.strftime('%B, %Y')%></li>
+      </ul>
+      <div class="controls">
+        <ul>
+          <li><%= link_to('View Profile', user_path(user.id))%> |</li>
+          <li><%= link_to('Edit Profile', edit_user_path(user.id))%></li>
+        </ul>
+      </div>
+    </div>
+  <% end %>
+</section>
+<section class="search-events">
+  <h2>Search users</h2>
+  <%= form_tag(users_path, :method => "get", id: "search-form", :enforce_utf8 => false) do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Users" %>
+    <%= submit_tag "Search", :name => nil %>
+  <% end %>
+</section>
