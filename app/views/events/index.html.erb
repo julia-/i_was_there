@@ -4,7 +4,7 @@
     <p>Sorry! We haven't been able to find what you're looking for.</p>
   <% end %>
   <% @events.each do |event| %> 
-    <div class="event">
+    <div class="result">
       <h3><%= event.title %></h3>
       <ul>
         <li><span class="list-label">Headliner</span> <%= event.headliner %></li>
@@ -21,7 +21,7 @@
     <%= link_to('Add new event', new_event_path) %> 
   </div>
 </section>
-<section class="search-events">
+<section class="search-database">
   <h2>Search events</h2>
   <%= form_tag(events_path, :method => "get", id: "search-form", :enforce_utf8 => false) do %>
     <%= text_field_tag :search, params[:search], placeholder: "Search Events" %>

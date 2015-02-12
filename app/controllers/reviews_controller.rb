@@ -1,6 +1,7 @@
 class ReviewsController < ApplicationController
   before_action :check_if_user, :only => [:new]
   before_action :check_if_owner, :only => [:edit, :update]
+  before_action :check_if_admin, :only => [:destroy]
 
   def index
     if params[:search]
@@ -51,8 +52,8 @@ class ReviewsController < ApplicationController
   end
 
   def check_if_owner
-    @owner = @current_user.reviews.find_by(id: params[:id])
-    redirect_to reviews_path if @owner.nil?
+    @owner = Review.find_by :user_id => params[:id]
+    redirect_to login_path if @owner.nil?
   end
   def check_if_admin
     redirect_to(root_path) unless @current_user.present? && @current_user.is_admin?

@@ -1,4 +1,3 @@
-<!-- NEED TO MODIFY EMAIL MESSAGE - HOW TO DO THIS?? -->
 <% if @user.errors.any? %>
   <ul>
     <% @user.errors.full_messages.each do |msg| %>
@@ -6,6 +5,7 @@
     <% end %>
   </ul>
 <% end %>
+
 <%= form_for @user do |f| %>
   <div class="form-group">
     <%= f.label :first_name %>
@@ -31,11 +31,11 @@
     <%= f.label :password_confirmation, 'Confirm password' %>
     <%= f.password_field :password_confirmation, :required => true %>
   </div>
-  <div>
+  <div class="form-group">
     <%= f.label :image, 'Profile picture' %>
     <%= f.file_field :image %>
   </div>
-  <div>
+  <div class="form-group">
     <%= f.submit 'Sign up', :class => 'btn-form' %>
   </div>
 <% end %>
