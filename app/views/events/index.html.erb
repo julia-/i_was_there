@@ -22,7 +22,7 @@
   </div>
 </section>
 <section class="search-events">
-  <h2>Search Events</h2>
+  <h2>Search events</h2>
   <%= form_tag(events_path, :method => "get", id: "search-form", :enforce_utf8 => false) do %>
     <%= text_field_tag :search, params[:search], placeholder: "Search Events" %>
     <%= submit_tag "Search", :name => nil %>

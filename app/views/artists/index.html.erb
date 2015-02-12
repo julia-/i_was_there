@@ -1,17 +1,17 @@
 <section class="results-index">
   <h2>Artists</h2>
   <% if @artists.length == 0 %>
-    <p>Sorry! We haven't been able to find what you're looking for.</p>
+    <p>Sorry! We can't find what you're looking for.</p>
   <% end %>
   <% @artists.each do |artist| %> 
-    <div class="artist">
+    <div class="event">
       <h3><%= artist.name %></h3>
       <div class="thumb-container">
         <%= image_tag artist.image %>
       </div>
-    </div>
-    <div>
-      <p><%= link_to('View artist', artist) %> | <%= link_to('View events', artist) %></p>
+      <div>
+        <p><%= link_to('View artist', artist) %> | <%= link_to('View events', artist) %></p>
+      </div>
     </div>
   <% end %>
   <div class="controls">

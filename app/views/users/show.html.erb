@@ -1,27 +1,36 @@
-<h2>Profile</h2>
-<div class="user-details">
-  <ul>
-    <li>Name: <%= @user.first_name %> <%= @user.last_name %> </li>
-    <li>Username: <%= @user.username %></li>
-    <li>Email: <%= @user.email %></li>
-    <li>Joined: <%= @user.created_at.strftime('%B %e, %Y')%></li>
-  </ul>
-</div>
-<div class="user-image">
-  <%= image_tag @user.image %>
-</div>
-
-<% if @user.reviews.any? %>
-  <h3>Reviews</h3>
-  <% @user.reviews.each do |review| %>
-    <p><%= review.title %></p>
+<section class="show">
+  <h2>Profile</h2>
+  <div class="user-details">
+  <h3><%= @user.first_name %> <%= @user.last_name %></h3>
+    <ul>
+      <li><span class="list-label">Username</span> <%= @user.username %></li>
+      <li><span class="list-label">Email</span> <%= @user.email %></li>
+      <li><span class="list-label">Joined</span> <%= @user.created_at.strftime('%B %Y')%></li>
+    </ul>
+  </div>
+  <div class="controls">
+    <ul>
+      <li><%= link_to 'Edit profile', edit_user_path(@user) %></li>
+      <% if @current_user.is_admin? %>
+        <li> | <%= link_to 'Delete account', @user, :method => 'delete', :data => {:confirm => "Are you sure?"} %></li>
+      <% end %>
+    </ul>
+  </div>
+</section>
+<section class="user-image-container">
+    <div class="user-image">
+    <%= image_tag @user.image %>
+  </div>
+</section>
+<section class="reviews">
+  <h2>Reviews</h2>
+  <% if @user.reviews.any? %>
+    <% @user.reviews.each do |review| %>
+      <ul>
+        <li><%= link_to review.title, review %></li>
+      </ul>
+    <% end %>
+  <% else %>
+    <p>You haven't yet written any reviews.</p>
   <% end %>
-<% else %>
-  <p>You have no reviews.</p>
-<% end %>
-
-<%= link_to 'Edit profile', edit_user_path(@user) %>
-
-<% if @current_user.is_admin? %>
-<%= link_to 'Delete', @user, :method => 'delete', :data => {:confirm => "Are you sure?"} %>
-<% end %>
+</section>

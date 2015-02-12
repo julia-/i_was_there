@@ -1,22 +1,26 @@
-<h2><%= @event.title %></h2>
-<ul class="event-details">
-  <ul>
-    <li>Headliner: <%= @event.headliner %></li>
-    <li>Date: <%= @event.date.strftime('%B %e, %Y') if @event.date %></li>
-    <li>Venue: <%= @event.venue_name %></li>
-    <li>Location: <%= @event.city %></li>
-  </ul>
-</ul>
+<section class="show">
+  <h2><%= @event.title %></h2>
+  <div class="event">
+    <ul>
+      <li><span class="list-label">Headliner</span> <%= @event.headliner %></li>
+      <li><span class="list-label">Date</span> <%= @event.date.strftime('%B %e, %Y') if @event.date %></li>
+      <li><span class="list-label">Venue</span> <%= @event.venue_name %></li>
+      <li><span class="list-label">Location</span> <%= @event.city %></li>
+      <li><span class="list-label">Lineup</span> <%= @event.artist %></li>
+    </ul>
+    <div class="controls">
+      <ul>
+        <li><%= link_to 'Add review', new_event_review_path(@event) %> |</li>
+        <li><%= link_to 'Edit event', edit_event_path(@event) %></li>
+      </ul>
+    </div>
+  </div>
+  <% @event.reviews.each do |review| %>
+    <p><%= link_to review.title, review %></p>
+  <% end %>
 
-<% @event.reviews.each do |review| %>
-  <p><%= link_to review.title, review %></p>
-<% end %>
+</section>
+<section class="map">
+  <iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/view?zoom=16&center=<%=@event.latitude%>%2C<%=@event.longitude%>&key=AIzaSyBLooHRQqVR7kZ9UtqVhXkwVGJ6bMN8W6s"></iframe>  
+</section>
 
-<%= link_to 'Add artist', add_artist_event_path(@event) %>
-<%= link_to 'Add review', new_event_review_path(@event) %>
-
-<%= link_to 'Edit event', edit_event_path(@event) %>
-
-<% if @current_user.is_admin? %>
-  <%= link_to 'Delete event', @event, :method => 'delete', :data => {:confirm => "Are you sure?"} %>
-<% end %>
