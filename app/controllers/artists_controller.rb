@@ -11,10 +11,10 @@ class ArtistsController < ApplicationController
   end
 
    def results
-    require 'uri'
+    require 'open-uri'
 
     keyword = params[:keyword]
-    result = JSON.parse(open("http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=#{keyword}&api_key=90a42b1096d510d21e3605d424c165b0&format=json").read)
+    result = JSON.parse(open(URI.encode("http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=#{keyword}&api_key=90a42b1096d510d21e3605d424c165b0&format=json")).read)
 
     @artist_results = result["artist"]
 
