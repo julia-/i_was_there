@@ -45,14 +45,11 @@ a {
   margin: auto;
 }
 
-<<<<<<< HEAD
-=======
 .artist {
   max-width: 60%;
   display: -webkit-flex;
   display: flex;
   flex-direction: row;
-
 }
 
 header, footer {
@@ -71,12 +68,11 @@ nav {
   position: absolute;
   right: 10px;
 }
->>>>>>> incorporate-api
+
 nav li {
   display: inline-block;
   padding: 10px;
 }
-<<<<<<< HEAD
 a {
   text-decoration: none;
   color: #000;
@@ -85,7 +81,7 @@ a {
 .hero-image {
   background-attachment: fixed;
   height: 100vh;
-=======
+}
 nav a {
   color: #FF4242;
   text-transform: uppercase;
@@ -164,7 +160,6 @@ img {
 
 .controls > ul > li {
   display: inline-block;
->>>>>>> incorporate-api
 }
 .fa {
   color: #FF4242;
@@ -199,10 +194,7 @@ img {
 .form-container form,
 .signin-container form {
   margin: 20px auto;
-<<<<<<< HEAD
   padding: 2.5em;
-=======
->>>>>>> incorporate-api
 }
 // FOOTER
 
@@ -233,62 +225,6 @@ img {
   vertical-align: middle; 
 }
 
-// nav a {
-// }
-
-// a {
-//   text-decoration: none;
-//   color: #000;
-// }
-
-
-
-// .tinted-image {
-//   background: 
-//     /* top, transparent red, faked with gradient */ 
-//     linear-gradient(
-//       rgba(255, 0, 0, 0.45), 
-//       rgba(255, 0, 0, 0.45)
-//     ),
-//     /* bottom, image */
-//     url(image.jpg);
-// }
-// .btn-signup {
-//   border: 1px solid rgba(255, 255, 255, 0.8);
-//   border-radius: 5px;
-//   padding: 12px 20px;
-// }
-
-
-/*User Sign up Form*/
-// .sign-up-form {
-//   max-width: 80%;
-//   margin: 20px auto;
-//   padding: 2.5em;
-
-// }
-
-// .btn-form {
-//   width: 100%;
-//   background-color: #911146;
-//   display: block;
-//   margin-top: 30px;
-//   padding: 0.7em;
-//   border: 2px solid #911146;
-//   color: #fff;
-//   font-size: 16px;
-//   text-transform: uppercase;
-// }
-
-// .form-group {
-//   margin: 10px auto;
-// }
-
-// label {
-//   display: inline-block;
-//   padding-bottom: 5px;
-//   border-radius: 3px;
-// }
 input {
   display: inline-block;
   width: 100%;
