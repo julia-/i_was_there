@@ -1,23 +1,25 @@
 <section class="results-index">
   <h2>Past Events</h2>
   <% @past_events.each do |event| %>
-    <h3><%= event["title"] %></h3>
-    <ul>
-      <li>Date: <%= event["startDate"].split.slice(1..3).join(' ') %> </li>
-      <li>Venue: <%= event["venue"]["name"] %>, <%= event["venue"]["location"]["city"] %>, <%= event["venue"]["location"]["country"] %></li>
-      <li>Headliner: <%= event["artists"]["headliner"] %></li>
-      <% if event["artists"]["artist"].class == Array %>
-        <li>Lineup:</li>
-        <% event["artists"]["artist"].each do |artist| %>
-          <ul>
-            <li><%= artist%></li>
-          </ul>
+    <div class="result">
+      <h3><%= event["title"] %></h3>
+      <ul>
+        <li><span class="list-label">Date</span> <%= event["startDate"].split.slice(1..3).join(' ') %> </li>
+        <li><span class="list-label">Venue</span> <%= event["venue"]["name"] %>, <%= event["venue"]["location"]["city"] %>, <%= event["venue"]["location"]["country"] %></li>
+        <li><span class="list-label">Headliner</span> <%= event["artists"]["headliner"] %></li>
+        <% if event["artists"]["artist"].class == Array %>
+          <li><span class="list-label">Lineup</span></li>
+          <% event["artists"]["artist"].each do |artist| %>
+            <ul>
+              <li><%= artist%></li>
+            </ul>
+          <% end %>
+        <% else %>
+          <% if event["artists"]["artist"] != event["artists"]["headliner"] %>
+            <li><span class="list-label">Lineup</span> <%= event["artists"]["artist"] %> </li>
+          <% end %>
         <% end %>
-      <% else %>
-        <% if event["artists"]["artist"] != event["artists"]["headliner"] %>
-          <li>Lineup: <%= event["artists"]["artist"] %> </li>
-        <% end %>
-      <% end %>
-    </ul>
+      </ul>
+    </div>
   <% end %>
 </section>
