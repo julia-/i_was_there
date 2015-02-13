@@ -2,7 +2,6 @@ class EventsController < ApplicationController
   before_action :check_if_user, :only => [:new]
   before_action :check_if_admin, :only => [:destroy]
 
-  # All event records stored display when page loads.
   def index
     if params[:search]
       @events = Event.search(params[:search]).order(:date)
@@ -90,6 +89,7 @@ class EventsController < ApplicationController
   end
 
   private
+  
   def event_params
     params.require(:event).permit(:title, :date, :headliner, :artist, :venue_name, :city, :country, :latitude, :longitude, :image, :id_event, :search)
   end

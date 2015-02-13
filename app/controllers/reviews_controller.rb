@@ -43,6 +43,7 @@ class ReviewsController < ApplicationController
   end
 
   private
+  
   def review_params
     params.require(:review).permit(:title, :content, :image, :event_id)
   end
@@ -55,6 +56,7 @@ class ReviewsController < ApplicationController
     @owner = Review.find_by :user_id => params[:id]
     redirect_to login_path if @owner.nil?
   end
+
   def check_if_admin
     redirect_to(root_path) unless @current_user.present? && @current_user.is_admin?
   end

@@ -22,25 +22,6 @@ class ArtistsController < ApplicationController
     unless @artist_id.present?
       artist = Artist.create :name => @artist_results["name"], :bio => @artist_results["bio"]["summary"], :image => @artist_results["image"][4]["#text"], :mbid => @artist_results["mbid"]
     end
-
-    # @artist_results = [@artist_results] unless @artist_results.is_a? Array
-
-    # @artist_results.each do |a|
-      # @lastfm_id = Artist.find_by(:lastfm_id => a["mbid"])
-        # unless a["name"].is_a? Array
-        #   a["name"] = [ a["name"] ]
-        # end
-      # unless @lastfm_id.present?
-        # artist = Event.new do |a|
-        #   artist.name = ["name"]
-        #   artist.image = a["image"][4]
-        #   artist.bio = a["bio"]["summary"]
-          # artist.lastfm_id = a["mbid"]
-        # end
-
-        # artist.save
-      # end
-    # end
   end
 
 
@@ -75,6 +56,7 @@ class ArtistsController < ApplicationController
   end
 
   private
+  
   def artist_params
     params.require(:artist).permit(:name, :genre, :city, :country, :bio, :image, :mbid)
   end
