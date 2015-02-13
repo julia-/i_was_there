@@ -8,7 +8,7 @@
     <%= link_to('Add new event', new_event_path) %> 
   </div>
 </section>
-<section class="search-events">
+<section class="search-database">
   <h2>Search artists</h2>
   <%= form_tag "/artists/results" do %>
       <%= text_field_tag :keyword, nil, :autofocus => true, :required => true %>
